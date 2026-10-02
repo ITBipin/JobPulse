@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="JobPulse.API/JobPulse.API.csproj" />
+  <Project Path="JobPulse.Application/JobPulse.Application.csproj" />
+  <Project Path="JobPulse.Domain/JobPulse.Domain.csproj" />
+  <Project Path="JobPulse.Infrastructure/JobPulse.Infrastructure.csproj" />
+  <Project Path="JobPulse.Tests/JobPulse.Tests.csproj" />
+  <Project Path="JobPulse.Worker/JobPulse.Worker.csproj" />
+</Solution>
