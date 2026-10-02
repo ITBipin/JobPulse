@@ -24,14 +24,14 @@ Backend:
 
 * C#
 * ASP.NET Core
-* .NET 8
+* .NET 10
 * Entity Framework Core
 * SQL Server
 * Clean Architecture
 
 Frontend:
 
-* Angular
+* Angular 22
 * TypeScript
 * Angular Material
 * SCSS

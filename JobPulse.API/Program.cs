@@ -98,8 +98,7 @@ app.MapGet("/", () => Results.Redirect("/swagger"))
     .ExcludeFromDescription();
 
 app.MapGet("/health", () => Results.Ok(new { status = "ok", service = "JobPulse.API" }))
-    .WithName("HealthCheck")
-    .WithOpenApi();
+    .WithName("HealthCheck");
 
 app.MapControllers();
 
