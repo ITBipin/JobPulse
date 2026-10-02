@@ -14,6 +14,7 @@ import {
   DashboardTrendsResponse
 } from '../../core/models/dashboard.model';
 import { AppError } from '../../core/models/api-error.model';
+import { isStaticOrDemoEnvironment } from '../../core/interceptors/demo-data.interceptor';
 
 import { PageHeaderComponent } from '../../shared/components/page-header/page-header.component';
 import { KpiCardComponent } from '../../shared/components/kpi-card/kpi-card.component';
@@ -73,6 +74,16 @@ import {
         </div>
         <a routerLink="/methodology" class="methodology-link">View Methodology &rarr;</a>
       </div>
+
+      <!-- Demo Preview Notice banner -->
+      @if (isDemoMode) {
+        <div class="demo-notice-banner">
+          <mat-icon class="banner-icon">insights</mat-icon>
+          <div class="banner-content">
+            <strong>Static Demo Preview:</strong> Displaying illustrative sample India tech ecosystem intelligence on GitHub Pages. To view live database metrics, connect your JobPulse .NET backend.
+          </div>
+        </div>
+      }
 
       <!-- Error State -->
       @if (error()) {
@@ -250,6 +261,33 @@ import {
       }
     }
 
+    .demo-notice-banner {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1.25rem;
+      background-color: var(--jp-brand-subtle);
+      border: 1px solid rgba(2, 132, 199, 0.25);
+      border-radius: var(--jp-radius-md);
+      margin-bottom: 1.5rem;
+      font-size: 0.84375rem;
+      color: var(--jp-text-secondary);
+
+      .banner-icon {
+        color: var(--jp-brand-primary);
+        font-size: 20px;
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+      }
+
+      .banner-content {
+        strong {
+          color: var(--jp-brand-text);
+        }
+      }
+    }
+
     .kpi-grid {
       display: grid;
       grid-template-columns: repeat(1, 1fr);
@@ -279,6 +317,7 @@ export class DashboardComponent implements OnInit {
   private readonly dashboardService = inject(DashboardService);
   private readonly themeService = inject(ThemeService);
 
+  readonly isDemoMode = isStaticOrDemoEnvironment();
   readonly isLoading = signal<boolean>(true);
   readonly isLoadingTrends = signal<boolean>(true);
   readonly error = signal<AppError | string | null>(null);

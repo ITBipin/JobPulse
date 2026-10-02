@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ThemeService } from '../../core/services/theme.service';
+import { isStaticOrDemoEnvironment } from '../../core/interceptors/demo-data.interceptor';
 
 import { BrandLogoComponent } from '../../shared/components/brand-logo/brand-logo.component';
 
@@ -56,6 +57,16 @@ import { BrandLogoComponent } from '../../shared/components/brand-logo/brand-log
         </nav>
 
         <div class="header-right">
+          @if (isDemoMode) {
+            <span
+              class="demo-mode-pill"
+              matTooltip="Static GitHub Pages Preview: Showing contract-compliant sample India tech market intelligence."
+            >
+              <mat-icon class="pill-icon">insights</mat-icon>
+              <span class="pill-label">Demo Preview</span>
+            </span>
+          }
+
           <button
             mat-icon-button
             class="theme-toggle-btn"
@@ -190,7 +201,32 @@ import { BrandLogoComponent } from '../../shared/components/brand-logo/brand-log
     .header-right {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.75rem;
+
+      .demo-mode-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.25rem 0.65rem;
+        border-radius: 9999px;
+        background-color: var(--jp-brand-subtle);
+        color: var(--jp-brand-text);
+        border: 1px solid rgba(2, 132, 199, 0.3);
+        font-size: 0.75rem;
+        font-weight: 600;
+        cursor: help;
+        user-select: none;
+
+        .pill-icon {
+          font-size: 1rem;
+          width: 1rem;
+          height: 1rem;
+        }
+
+        .pill-label {
+          letter-spacing: 0.02em;
+        }
+      }
 
       .theme-toggle-btn {
         color: var(--jp-text-secondary);
@@ -210,4 +246,5 @@ import { BrandLogoComponent } from '../../shared/components/brand-logo/brand-log
 export class HeaderComponent {
   readonly themeService = inject(ThemeService);
   readonly toggleMenu = output<void>();
+  readonly isDemoMode = isStaticOrDemoEnvironment();
 }
