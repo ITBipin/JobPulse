@@ -94,7 +94,8 @@ import { ErrorStateComponent } from '../../shared/components/error-state/error-s
                 <div class="success-banner" role="status">
                   <mat-icon class="success-icon">check_circle</mat-icon>
                   <div class="success-text">
-                    <h3>Registration Successfully Recorded!</h3>
+                    <h3>Registration submitted successfully.</h3>
+                    <p class="policy-note">Your voluntary submission has been recorded according to JobPulse's platform registration policy.</p>
                     <p>Status: <strong>{{ registrationResult()?.status }}</strong> &bull; Recorded At: {{ registrationResult()?.registeredAtUtc | date:'medium' }}</p>
                     <p class="sub-msg">Thank you for contributing to open, transparent tech hiring intelligence in India.</p>
                   </div>
@@ -196,7 +197,7 @@ import { ErrorStateComponent } from '../../shared/components/error-state/error-s
                     <mat-checkbox formControlName="consent" color="primary">
                       <span>I voluntarily submit this anonymous profile to contribute to JobPulse India job market intelligence analytics.</span>
                     </mat-checkbox>
-                    @if (registerForm.get('consent')?.hasError('requiredTrue') && registerForm.get('consent')?.touched) {
+                    @if (registerForm.get('consent')?.hasError('required') && registerForm.get('consent')?.touched) {
                       <div class="consent-error">Explicit consent is required to register.</div>
                     }
                   </div>
@@ -225,7 +226,7 @@ import { ErrorStateComponent } from '../../shared/components/error-state/error-s
               <div class="tab-intro">
                 <h3>Refresh or Change Your Status</h3>
                 <p class="text-muted">
-                  If you have registered on JobPulse and wish to transition between OpenToWork, NotLooking, or Hired, enter your registration ID below.
+                  Already registered? Use your existing JobPulse reference ID to update your status.
                 </p>
               </div>
 
@@ -257,6 +258,9 @@ import { ErrorStateComponent } from '../../shared/components/error-state/error-s
                     <input matInput formControlName="jobSeekerId" placeholder="e.g. 3fa85f64-5717-4562-b3fc-2c963f66afa6" />
                     @if (statusForm.get('jobSeekerId')?.hasError('required') && statusForm.get('jobSeekerId')?.touched) {
                       <mat-error>Job seeker identifier is required</mat-error>
+                    }
+                    @if (statusForm.get('jobSeekerId')?.hasError('pattern') && statusForm.get('jobSeekerId')?.touched) {
+                      <mat-error>Please enter a valid GUID (e.g. 3fa85f64-5717-4562-b3fc-2c963f66afa6)</mat-error>
                     }
                   </mat-form-field>
 
@@ -540,7 +544,7 @@ export class JobSeekersComponent implements OnInit {
   });
 
   readonly statusForm: FormGroup = this.fb.group({
-    jobSeekerId: ['', [Validators.required]],
+    jobSeekerId: ['', [Validators.required, Validators.pattern(/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/)]],
     status: ['OpenToWork', Validators.required]
   });
 
