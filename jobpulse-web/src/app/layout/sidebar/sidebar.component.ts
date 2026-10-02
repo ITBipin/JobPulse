@@ -4,6 +4,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { BrandLogoComponent } from '../../shared/components/brand-logo/brand-logo.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,12 +15,13 @@ import { MatButtonModule } from '@angular/material/button';
     MatListModule,
     MatIconModule,
     MatDividerModule,
-    MatButtonModule
+    MatButtonModule,
+    BrandLogoComponent
   ],
   template: `
     <aside class="sidebar-container" aria-label="Mobile Navigation">
       <div class="sidebar-header">
-        <div class="sidebar-title">Navigation</div>
+        <app-brand-logo [linkable]="true" linkUrl="/dashboard" size="sm" (click)="close.emit()"></app-brand-logo>
         <button mat-icon-button (click)="close.emit()" aria-label="Close navigation">
           <mat-icon>close</mat-icon>
         </button>

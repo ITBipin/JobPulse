@@ -6,6 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ThemeService } from '../../core/services/theme.service';
 
+import { BrandLogoComponent } from '../../shared/components/brand-logo/brand-logo.component';
+
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -15,7 +17,8 @@ import { ThemeService } from '../../core/services/theme.service';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    BrandLogoComponent
   ],
   template: `
     <header class="app-header">
@@ -30,15 +33,7 @@ import { ThemeService } from '../../core/services/theme.service';
             <mat-icon>menu</mat-icon>
           </button>
 
-          <a routerLink="/dashboard" class="brand-logo" aria-label="JobPulse Home">
-            <div class="logo-icon">
-              <mat-icon>analytics</mat-icon>
-            </div>
-            <div class="brand-text">
-              <span class="brand-name">JobPulse</span>
-              <span class="brand-subtitle">India Intelligence</span>
-            </div>
-          </a>
+          <app-brand-logo [linkable]="true" linkUrl="/dashboard" size="md"></app-brand-logo>
         </div>
 
         <nav class="header-nav desktop-only" aria-label="Main Navigation">

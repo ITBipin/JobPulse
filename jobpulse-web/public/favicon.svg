@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="favBadge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+    <linearGradient id="favPulse" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="40%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="24" fill="url(#favBadge)" />
+  <!-- Data bar accents -->
+  <rect x="48" y="44" width="8" height="28" rx="3" fill="#ffffff" opacity="0.3" />
+  <rect x="62" y="32" width="8" height="40" rx="3" fill="#ffffff" opacity="0.45" />
+  <!-- Pulse Line -->
+  <path d="M 14 54 L 30 54 L 38 40 L 46 68 L 54 26 L 62 66 L 70 46 L 86 30"
+        fill="none"
+        stroke="url(#favPulse)"
+        stroke-width="6.5"
+        stroke-linecap="round"
+        stroke-linejoin="round" />
+  <!-- Arrow -->
+  <polygon points="86,20 96,32 85,36 89,28" fill="#ffffff" />
+</svg>

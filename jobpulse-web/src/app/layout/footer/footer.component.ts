@@ -1,20 +1,18 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { BrandLogoComponent } from '../../shared/components/brand-logo/brand-logo.component';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [RouterLink, MatIconModule],
+  imports: [RouterLink, MatIconModule, BrandLogoComponent],
   template: `
     <footer class="app-footer">
       <div class="footer-container">
         <div class="footer-top">
           <div class="footer-brand">
-            <div class="brand-title">
-              <mat-icon class="brand-icon">analytics</mat-icon>
-              <span>JobPulse India</span>
-            </div>
+            <app-brand-logo [linkable]="true" linkUrl="/dashboard" size="lg" subtitle="India Market Intelligence"></app-brand-logo>
             <p class="brand-desc">
               Transparent, data-backed intelligence for the Indian job ecosystem. Tracking active openings, technology demand, and market pressure ratios.
             </p>
