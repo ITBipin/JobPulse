@@ -15,9 +15,10 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { JobSeekerService } from '../../core/services/job-seeker.service';
 import { TechnologyService } from '../../core/services/technology.service';
 import { LocationService } from '../../core/services/location.service';
+import { ExperienceRangeService } from '../../core/services/experience-range.service';
+import { ExperienceRangeOption } from '../../core/models/experience-range.model';
 import {
   ActiveJobSeekerCountResponse,
-  DEFAULT_EXPERIENCE_TIERS,
   JobSeekerRegistrationResponse,
   JobSeekerStatusUpdateResponse,
   RegisterJobSeekerRequest,
@@ -134,7 +135,7 @@ import { ErrorStateComponent } from '../../shared/components/error-state/error-s
                     <mat-form-field appearance="outline" class="form-field">
                       <mat-label>Experience Range</mat-label>
                       <mat-select formControlName="experienceRangeId" placeholder="Select experience range">
-                        @for (tier of experienceTiers; track tier.id) {
+                        @for (tier of experienceTiers(); track tier.id) {
                           <mat-option [value]="tier.id">{{ tier.label }}</mat-option>
                         }
                       </mat-select>
@@ -509,9 +510,10 @@ export class JobSeekersComponent implements OnInit {
   private readonly seekerService = inject(JobSeekerService);
   private readonly techService = inject(TechnologyService);
   private readonly locService = inject(LocationService);
+  private readonly expService = inject(ExperienceRangeService);
   private readonly fb = inject(FormBuilder);
 
-  readonly experienceTiers = DEFAULT_EXPERIENCE_TIERS;
+  readonly experienceTiers = signal<ExperienceRangeOption[]>([]);
   readonly technologies = signal<TechnologyDto[]>([]);
   readonly locations = signal<LocationDto[]>([]);
   readonly activeCountData = signal<ActiveJobSeekerCountResponse | null>(null);
@@ -548,6 +550,11 @@ export class JobSeekersComponent implements OnInit {
   }
 
   loadMetadata(): void {
+    this.expService.getExperienceRanges().subscribe({
+      next: (tiers) => this.experienceTiers.set(tiers),
+      error: () => {}
+    });
+
     this.techService.getTechnologies().subscribe({
       next: (techs) => this.technologies.set(techs),
       error: () => {}

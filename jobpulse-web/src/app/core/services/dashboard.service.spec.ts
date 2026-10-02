@@ -113,4 +113,18 @@ describe('DashboardService', () => {
     expect(req.request.params.get('experienceRangeId')).toBe('e-789');
     req.flush(mockRatio);
   });
+
+  it('should omit query parameters when filters are not provided or Guid.Empty', () => {
+    service.getPressureRatio({
+      technologyId: '00000000-0000-0000-0000-000000000000',
+      locationId: undefined,
+      experienceRangeId: ''
+    }).subscribe();
+
+    const req = httpTesting.expectOne('/api/v1/dashboard/pressure-ratio');
+    expect(req.request.params.has('technologyId')).toBe(false);
+    expect(req.request.params.has('locationId')).toBe(false);
+    expect(req.request.params.has('experienceRangeId')).toBe(false);
+    req.flush({} as any);
+  });
 });

@@ -34,15 +34,18 @@ export class DashboardService {
 
   getPressureRatio(query?: JobMarketPressureRatioQuery): Observable<JobMarketPressureRatioResponse> {
     let params = new HttpParams();
-    if (query?.technologyId) {
-      params = params.set('technologyId', query.technologyId);
+    const emptyGuid = '00000000-0000-0000-0000-000000000000';
+
+    if (query?.technologyId && query.technologyId.trim() && query.technologyId !== emptyGuid) {
+      params = params.set('technologyId', query.technologyId.trim());
     }
-    if (query?.locationId) {
-      params = params.set('locationId', query.locationId);
+    if (query?.locationId && query.locationId.trim() && query.locationId !== emptyGuid) {
+      params = params.set('locationId', query.locationId.trim());
     }
-    if (query?.experienceRangeId) {
-      params = params.set('experienceRangeId', query.experienceRangeId);
+    if (query?.experienceRangeId && query.experienceRangeId.trim() && query.experienceRangeId !== emptyGuid) {
+      params = params.set('experienceRangeId', query.experienceRangeId.trim());
     }
+
     return this.http.get<JobMarketPressureRatioResponse>(`${this.baseUrl}/pressure-ratio`, { params });
   }
 }
