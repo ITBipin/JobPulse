@@ -1,0 +1,119 @@
+@use './styles/variables' as *;
+
+// Include Material prebuilt theme
+@import '@angular/material/prebuilt-themes/azure-blue.css';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: var(--jp-font-family);
+  background-color: var(--jp-bg-primary);
+  color: var(--jp-text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input, select, textarea, a {
+  touch-action: manipulation;
+}
+
+:focus-visible {
+  outline: 2px solid var(--jp-brand-primary);
+  outline-offset: 2px;
+}
+
+.skip-to-content {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 10000;
+  padding: 0.625rem 1.25rem;
+  background-color: var(--jp-brand-primary);
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: var(--jp-radius-sm);
+  box-shadow: var(--jp-shadow-md);
+  transition: top 0.2s ease;
+
+  &:focus {
+    top: 1rem;
+  }
+}
+
+.sr-only, .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+a {
+  color: var(--jp-brand-primary);
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Global utility classes
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.text-muted {
+  color: var(--jp-text-muted);
+}
+
+.text-secondary {
+  color: var(--jp-text-secondary);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  line-height: 1;
+
+  &.badge-success {
+    background-color: var(--jp-success-bg);
+    color: var(--jp-success);
+  }
+
+  &.badge-warning {
+    background-color: var(--jp-warning-bg);
+    color: var(--jp-warning);
+  }
+
+  &.badge-danger {
+    background-color: var(--jp-danger-bg);
+    color: var(--jp-danger);
+  }
+
+  &.badge-info {
+    background-color: var(--jp-info-bg);
+    color: var(--jp-info);
+  }
+}
+
+// Responsive text utilities
+@media (max-width: 640px) {
+  h1 { font-size: 1.5rem !important; }
+  h2 { font-size: 1.25rem !important; }
+}

@@ -1,0 +1,25 @@
+<mat-sidenav-container class="app-sidenav-container">
+  <mat-sidenav
+    mode="over"
+    [opened]="isSidebarOpen()"
+    (closed)="closeSidebar()"
+    class="app-sidenav"
+    role="navigation"
+    aria-label="Mobile Navigation Drawer"
+  >
+    <app-sidebar (close)="closeSidebar()"></app-sidebar>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="app-shell-content">
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    <app-header (toggleMenu)="toggleSidebar()"></app-header>
+
+    <main id="main-content" class="main-viewport" tabindex="-1">
+      <div class="main-container">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

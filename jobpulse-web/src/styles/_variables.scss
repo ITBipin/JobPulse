@@ -1,0 +1,74 @@
+:root {
+  --jp-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  
+  // Light Theme Colors
+  --jp-bg-primary: #f8fafc;
+  --jp-bg-surface: #ffffff;
+  --jp-bg-surface-hover: #f1f5f9;
+  --jp-bg-subtle: #f1f5f9;
+  
+  --jp-border-color: #e2e8f0;
+  --jp-border-subtle: #edf2f7;
+  
+  --jp-text-primary: #0f172a;
+  --jp-text-secondary: #475569;
+  --jp-text-muted: #64748b;
+  --jp-text-disabled: #94a3b8;
+
+  --jp-brand-primary: #0284c7;
+  --jp-brand-hover: #0369a1;
+  --jp-brand-subtle: #e0f2fe;
+  --jp-brand-text: #0369a1;
+
+  --jp-success: #16a34a;
+  --jp-success-bg: #dcfce7;
+  --jp-warning: #d97706;
+  --jp-warning-bg: #fef3c7;
+  --jp-danger: #dc2626;
+  --jp-danger-bg: #fee2e2;
+  --jp-info: #2563eb;
+  --jp-info-bg: #dbeafe;
+
+  --jp-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --jp-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+  --jp-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+
+  --jp-header-height: 64px;
+  --jp-sidebar-width: 256px;
+  --jp-radius-sm: 6px;
+  --jp-radius-md: 10px;
+  --jp-radius-lg: 14px;
+}
+
+body.dark-theme {
+  --jp-bg-primary: #0b1120;
+  --jp-bg-surface: #131c31;
+  --jp-bg-surface-hover: #1e293b;
+  --jp-bg-subtle: #19233c;
+
+  --jp-border-color: #273553;
+  --jp-border-subtle: #1e293b;
+
+  --jp-text-primary: #f8fafc;
+  --jp-text-secondary: #cbd5e1;
+  --jp-text-muted: #94a3b8;
+  --jp-text-disabled: #64748b;
+
+  --jp-brand-primary: #38bdf8;
+  --jp-brand-hover: #0ea5e9;
+  --jp-brand-subtle: #0c4a6e;
+  --jp-brand-text: #7dd3fc;
+
+  --jp-success: #4ade80;
+  --jp-success-bg: #14532d;
+  --jp-warning: #fbbf24;
+  --jp-warning-bg: #78350f;
+  --jp-danger: #f87171;
+  --jp-danger-bg: #7f1d1d;
+  --jp-info: #60a5fa;
+  --jp-info-bg: #1e3a8a;
+
+  --jp-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --jp-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+  --jp-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+}

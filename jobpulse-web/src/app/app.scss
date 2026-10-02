@@ -1,0 +1,33 @@
+.app-sidenav-container {
+  height: 100vh;
+  width: 100%;
+}
+
+.app-sidenav {
+  width: 280px;
+  max-width: 80vw;
+  border-right: 1px solid var(--jp-border-color);
+  background-color: var(--jp-bg-surface);
+}
+
+.app-shell-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--jp-bg-primary);
+}
+
+.main-viewport {
+  flex: 1;
+  padding: 1.5rem 1rem 3rem;
+
+  @media (min-width: 768px) {
+    padding: 2rem 1.5rem 4rem;
+  }
+}
+
+.main-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
