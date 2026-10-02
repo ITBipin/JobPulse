@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" width="100%" height="100%">
+  <defs>
+    <linearGradient id="jpBadgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="jpHexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="50%" stop-color="#0ea5e9" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+    <linearGradient id="jpPulseGrad" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="35%" stop-color="#f59e0b" />
+      <stop offset="55%" stop-color="#fbbf24" />
+      <stop offset="75%" stop-color="#0ea5e9" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="jpBarGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#0369a1" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0.75" />
+    </linearGradient>
+    <filter id="jpGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Outer Rounded Shield Container -->
+  <rect x="4" y="4" width="92" height="92" rx="22" fill="url(#jpBadgeGrad)" stroke="#334155" stroke-width="1.5" />
+
+  <!-- Inner Hexagon Contour -->
+  <path d="M 50 14 L 80 31 L 80 69 L 50 86 L 20 69 L 20 31 Z"
+        fill="none"
+        stroke="url(#jpHexGrad)"
+        stroke-width="3"
+        stroke-linejoin="round" />
+
+  <!-- Background Data Analytics Bars -->
+  <rect x="44" y="46" width="6" height="24" rx="2" fill="url(#jpBarGrad)" />
+  <rect x="54" y="38" width="6" height="32" rx="2" fill="url(#jpBarGrad)" />
+  <rect x="64" y="30" width="6" height="40" rx="2" fill="url(#jpBarGrad)" />
+
+  <!-- The JobPulse ECG Waveform + Upward Trend Arrow -->
+  <!-- Shadow / Glow for Waveform -->
+  <path d="M 12 52 L 28 52 L 35 40 L 42 66 L 49 26 L 56 68 L 62 46 L 78 30"
+        fill="none"
+        stroke="#f59e0b"
+        stroke-width="3.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        opacity="0.5"
+        filter="url(#jpGlow)" />
+
+  <!-- Core Dynamic Pulse Line -->
+  <path d="M 12 52 L 28 52 L 35 40 L 42 66 L 49 26 L 56 68 L 62 46 L 78 30"
+        fill="none"
+        stroke="url(#jpPulseGrad)"
+        stroke-width="3.5"
+        stroke-linecap="round"
+        stroke-linejoin="round" />
+
+  <!-- Upward Trend Arrowhead -->
+  <polygon points="78,22 88,32 78,35 81,29"
+           fill="#38bdf8"
+           stroke="#0284c7"
+           stroke-width="1"
+           filter="url(#jpGlow)" />
+
+  <!-- Pulse Center Indicator Dot (Warm Amber Spark) -->
+  <circle cx="49" cy="26" r="3.2" fill="#f59e0b" />
+  <circle cx="49" cy="26" r="1.5" fill="#ffffff" />
+</svg>
