@@ -61,6 +61,31 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
+    app.Use(async (context, next) =>
+    {
+        if (context.Request.Path.StartsWithSegments("/swagger/v1/swagger.json"))
+        {
+            var originalBodyStream = context.Response.Body;
+            using var responseBody = new MemoryStream();
+            context.Response.Body = responseBody;
+
+            await next();
+
+            context.Response.Body = originalBodyStream;
+            responseBody.Seek(0, SeekOrigin.Begin);
+            var text = await new StreamReader(responseBody).ReadToEndAsync();
+            if (text.Contains("\"openapi\": \"3.0.4\""))
+            {
+                text = text.Replace("\"openapi\": \"3.0.4\"", "\"openapi\": \"3.0.1\"");
+            }
+            context.Response.ContentLength = System.Text.Encoding.UTF8.GetByteCount(text);
+            await context.Response.WriteAsync(text);
+            return;
+        }
+
+        await next();
+    });
+
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
@@ -68,6 +93,9 @@ if (app.Environment.IsDevelopment())
         options.RoutePrefix = "swagger";
     });
 }
+
+app.MapGet("/", () => Results.Redirect("/swagger"))
+    .ExcludeFromDescription();
 
 app.MapGet("/health", () => Results.Ok(new { status = "ok", service = "JobPulse.API" }))
     .WithName("HealthCheck")
