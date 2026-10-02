@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:gh-pages": "ng build --base-href /JobPulse/ && node -e \"const fs=require('fs'); fs.copyFileSync('dist/jobpulse-web/browser/index.html', 'dist/jobpulse-web/browser/404.html'); fs.writeFileSync('dist/jobpulse-web/browser/.nojekyll', '');\"",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "postinstall": "node -e \"try { const f = 'node_modules/@angular/cli/src/utilities/node-version.js'; if (require('fs').existsSync(f)) { const fs = require('fs'); let c = fs.readFileSync(f, 'utf-8'); if (c.includes('^22.22.3')) { fs.writeFileSync(f, c.replace('^22.22.3', '^22.17.0')); } } } catch(e){}\""

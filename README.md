@@ -1,8 +1,8 @@
-# JobPulse AI Development Rules
+# JobPulse – India Job Market Intelligence Dashboard
 
-You are working on an existing project called JobPulse.
+🌐 **Live Website:** [https://itbipin.github.io/JobPulse/](https://itbipin.github.io/JobPulse/)
 
-JobPulse is a public India Job Market Intelligence Dashboard.
+JobPulse is a public India Job Market Intelligence Dashboard tracking active openings, voluntary candidate volume, and hiring demand across India's tech ecosystem.
 
 ## Goal
 
